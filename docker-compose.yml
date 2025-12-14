@@ -1,0 +1,8 @@
+services:
+  url-press-frontend:
+    build: .
+    container_name: url-press-frontend
+    ports:
+      - 5173:5173
+    volumes:
+      - .:/app
