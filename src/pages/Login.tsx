@@ -14,7 +14,17 @@ export default function Login() {
           type="email"
           name="email"
           placeholder="E-mail"
-          className="border border-zinc-300 rounded px-3 py-2"
+          className="
+            border
+            border-zinc-300
+            rounded
+            px-3
+            py-2
+            focus:outline-none
+            focus:border-[color:var(--color-default)]
+            focus:ring-1
+            focus:ring-[color:var(--color-default)]
+          "
         />
 
         <label htmlFor="password" className="text-sm font-medium">
@@ -25,12 +35,29 @@ export default function Login() {
           type="password"
           name="password"
           placeholder="Password"
-          className="border border-zinc-300 rounded px-3 py-2"
+          className="
+            border
+            border-zinc-300
+            rounded
+            px-3
+            py-2
+            focus:outline-none
+            focus:border-[color:var(--color-default)]
+            focus:ring-1
+            focus:ring-[color:var(--color-default)]
+          "
         />
 
         <button
           type="submit"
-          className="mt-2 bg-[color:var(--color-default)] text-white py-2 rounded hover:bg-[color:var(--color-default-hover)]"
+          className="
+            mt-2
+            bg-[color:var(--color-default)]
+            text-white
+            py-2
+            rounded
+            hover:bg-[color:var(--color-default-hover)]
+          "
         >
           Login
         </button>
