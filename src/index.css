@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+:root {
+  --color-default: #4f5b93;
+  --color-default-hover: #7e8abf;
+}
+
+body {
+  color: theme(--color-zinc-600);
+  background-color: theme(--color-zinc-50);
+}

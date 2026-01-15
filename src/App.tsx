@@ -1,13 +1,25 @@
+import { Route, Routes, useLocation } from 'react-router';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Navbar from './components/Navbar';
+
 export default function App() {
+  const location = useLocation()
+  const showNavbar = location.pathname !== '/login'
+  const navItems = [
+    { label: 'Home', to: '/' },
+    { label: 'Login', to: '/login' },
+  ]
+
   return (
     <>
       <div className="p-10">
-        <h1 className="text-3xl font-bold text-sky-400">
-          Home
-        </h1>
-        <p className="mt-4 text-zinc-300">
-          Bem-vindo ao URL Press 🚀
-        </p>
+        {showNavbar && <Navbar items={navItems} />}
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
       </div>
     </>
   )
