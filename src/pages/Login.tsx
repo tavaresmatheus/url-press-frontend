@@ -1,9 +1,28 @@
+import { useState } from 'react'
+import { useAuth } from '../hooks/useAuth'
+
 export default function Login() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const {handleLogin, loading, error} = useAuth()
+
+  async function handleSubmit(event: React.FormEvent) {
+    event.preventDefault()
+    const response = await handleLogin(email, password)
+    setEmail('')
+    setPassword('')
+
+    if (response) {
+      localStorage.setItem('token', response.token)
+    }
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <form
         method="post"
         className="grid gap-5 p-8 bg-white rounded-lg shadow-md w-fit border border-zinc-300"
+        onSubmit={handleSubmit}
       >
         <img src="/url-press-logo.png" alt="Logo Url Press" className="h-24 w-auto mx-auto"/>
         <label htmlFor="email" className="text-sm font-medium">
@@ -14,6 +33,8 @@ export default function Login() {
           type="email"
           name="email"
           placeholder="E-mail"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
           className="
             border
             border-zinc-300
@@ -35,6 +56,8 @@ export default function Login() {
           type="password"
           name="password"
           placeholder="Password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
           className="
             border
             border-zinc-300
@@ -50,6 +73,7 @@ export default function Login() {
 
         <button
           type="submit"
+          disabled={loading}
           className="
             mt-2
             bg-[color:var(--color-default)]
@@ -59,8 +83,10 @@ export default function Login() {
             hover:bg-[color:var(--color-default-hover)]
           "
         >
-          Login
+          {loading ? 'Getting in...' : 'Login'}
         </button>
+
+        {error && <p className="text-red-900 text-center">{error}</p>}
       </form>
     </div>
   )
