@@ -1,7 +1,7 @@
 import { Route, Routes, useLocation } from 'react-router';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import Panel from './pages/Panel';
 
 export default function App() {

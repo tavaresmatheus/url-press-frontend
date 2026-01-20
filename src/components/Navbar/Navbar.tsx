@@ -1,19 +1,13 @@
-import { Link, useLocation } from "react-router";
-
-type NavItem = {
-  label: string
-  to: string
-}
-
-type NavbarProps = {
-  items: NavItem[]
-}
+import { Link, useLocation } from 'react-router';
+import type { NavbarProps } from './Navbar.types';
 
 export default function Navbar({ items }: NavbarProps) {
   const location = useLocation()
 
   return (
-    <nav className="flex gap-6 p-6 bg-[color:var(--color-default)] rounded-md text-white">
+    <nav
+      className="flex gap-6 p-6 bg-[color:var(--color-default)] rounded-md text-white"
+    >
       {items.map((item) => {
         const isActive = location.pathname === item.to
 
